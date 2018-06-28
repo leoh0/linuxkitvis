@@ -1,0 +1,585 @@
+digraph {
+	node [fontname=Helvetica shape=rectangle]
+	edge [arrowhead=open fontname=Helvetica fontsize=12]
+	kernel [label="linuxkit/kernel
+4.14.40"]
+	rootfs [label=RootFS]
+	kernel -> rootfs
+	"linuxkit/init
+c79d7587fcd0a195b8a3ecafe428a30e735cf2b4"
+	"linuxkit/runc
+d659de11767a419319b175700a7c6f64b8704f8c"
+	"linuxkit/containerd
+018fc633223d8a49f650da365603a5abccc6a423"
+	"linuxkit/ca-certificates
+f882e9be933fac737bf1f4d303a4bb49a12f302f"
+	"linuxkit/init
+c79d7587fcd0a195b8a3ecafe428a30e735cf2b4" -> rootfs
+	"linuxkit/runc
+d659de11767a419319b175700a7c6f64b8704f8c" -> rootfs
+	"linuxkit/containerd
+018fc633223d8a49f650da365603a5abccc6a423" -> rootfs
+	"linuxkit/ca-certificates
+f882e9be933fac737bf1f4d303a4bb49a12f302f" -> rootfs
+	"sysctl
+linuxkit/sysctl
+2a98cb7a116d4d8a71498cea0e0ad8116a9b5a3b" [color=red]
+	"/etc/sysctl.d/01-kubernetes.conf" [label="/etc/sysctl.d/01-kubernetes.conf" color=red]
+	"sysfs
+linuxkit/sysfs
+dc7b876f395fa44c2b93bad6b987e418497c5b34" [color=red]
+	"dhcpcd
+linuxkit/dhcpcd
+193a81bd4a93779c8a048d66e0cb1d201d0ae102" [color=red]
+	"/etc" [label="/etc" color=red]
+	"metadata
+linuxkit/metadata
+6962be42ec291db67ac9bb4267d8fd06fd464f48" [color=red]
+	"/dev" [label="/dev" color=red]
+	"/var" [label="/var" color=red]
+	"/run" [label="/run" color=red]
+	"/sys" [label="/sys" color=red]
+	"/etc/resolv.conf" [label="/etc/resolv.conf" color=red]
+	"/etc/ssl/certs" [label="/etc/ssl/certs" color=red]
+	"format
+linuxkit/format
+9a537dd3eaefd02dbc01c598b843fba33da8c1a5" [color=red]
+	"/dev" [label="/dev" color=red]
+	"mounts
+linuxkit/mount
+a718496fa5ea2a7a9f7552eac64c7f3699fb6a86" [color=red]
+	"/dev" [label="/dev" color=red]
+	"/var" [label="/var" color=red]
+	"/hostroot" [label="/hostroot" color=red]
+	rootfs -> "/etc/sysctl.d/01-kubernetes.conf" [label="/etc/sysctl.d/01-kubernetes.conf
+ rshared:False
+ rbind:False
+ target:linuxkit/sysctl
+2a98cb7a116d4d8a71498cea0e0ad8116a9b5a3b" color=red]
+	"/etc/sysctl.d/01-kubernetes.conf" -> "sysctl
+linuxkit/sysctl
+2a98cb7a116d4d8a71498cea0e0ad8116a9b5a3b" [color=red]
+	rootfs -> "sysfs
+linuxkit/sysfs
+dc7b876f395fa44c2b93bad6b987e418497c5b34" [color=red]
+	rootfs -> "/etc" [label="/run/resolvconf
+ rshared:False
+ rbind:False
+ target:linuxkit/dhcpcd
+193a81bd4a93779c8a048d66e0cb1d201d0ae102" color=red]
+	"/etc" -> "dhcpcd
+linuxkit/dhcpcd
+193a81bd4a93779c8a048d66e0cb1d201d0ae102" [color=red]
+	rootfs -> "/dev" [label="/dev
+ rshared:False
+ rbind:False
+ target:linuxkit/metadata
+6962be42ec291db67ac9bb4267d8fd06fd464f48" color=red]
+	"/dev" -> "metadata
+linuxkit/metadata
+6962be42ec291db67ac9bb4267d8fd06fd464f48" [color=red]
+	rootfs -> "/var" [label="/var
+ rshared:False
+ rbind:False
+ target:linuxkit/metadata
+6962be42ec291db67ac9bb4267d8fd06fd464f48" color=red]
+	"/var" -> "metadata
+linuxkit/metadata
+6962be42ec291db67ac9bb4267d8fd06fd464f48" [color=red]
+	rootfs -> "/run" [label="/run
+ rshared:False
+ rbind:False
+ target:linuxkit/metadata
+6962be42ec291db67ac9bb4267d8fd06fd464f48" color=red]
+	"/run" -> "metadata
+linuxkit/metadata
+6962be42ec291db67ac9bb4267d8fd06fd464f48" [color=red]
+	rootfs -> "/sys" [label="/sys
+ rshared:False
+ rbind:False
+ target:linuxkit/metadata
+6962be42ec291db67ac9bb4267d8fd06fd464f48" color=red]
+	"/sys" -> "metadata
+linuxkit/metadata
+6962be42ec291db67ac9bb4267d8fd06fd464f48" [color=red]
+	rootfs -> "/etc/resolv.conf" [label="/etc/resolv.conf
+ rshared:False
+ rbind:False
+ target:linuxkit/metadata
+6962be42ec291db67ac9bb4267d8fd06fd464f48" color=red]
+	"/etc/resolv.conf" -> "metadata
+linuxkit/metadata
+6962be42ec291db67ac9bb4267d8fd06fd464f48" [color=red]
+	rootfs -> "/etc/ssl/certs" [label="/etc/ssl/certs
+ rshared:False
+ rbind:False
+ target:linuxkit/metadata
+6962be42ec291db67ac9bb4267d8fd06fd464f48" color=red]
+	"/etc/ssl/certs" -> "metadata
+linuxkit/metadata
+6962be42ec291db67ac9bb4267d8fd06fd464f48" [color=red]
+	rootfs -> "/dev" [label="/dev
+ rshared:False
+ rbind:False
+ target:linuxkit/format
+9a537dd3eaefd02dbc01c598b843fba33da8c1a5" color=red]
+	"/dev" -> "format
+linuxkit/format
+9a537dd3eaefd02dbc01c598b843fba33da8c1a5" [color=red]
+	rootfs -> "/dev" [label="/dev
+ rshared:False
+ rbind:False
+ target:linuxkit/mount
+a718496fa5ea2a7a9f7552eac64c7f3699fb6a86" color=red]
+	"/dev" -> "mounts
+linuxkit/mount
+a718496fa5ea2a7a9f7552eac64c7f3699fb6a86" [color=red]
+	rootfs -> "/var" [label="/var
+ rshared:True
+ rbind:True
+ target:linuxkit/mount
+a718496fa5ea2a7a9f7552eac64c7f3699fb6a86" color=red]
+	"/var" -> "mounts
+linuxkit/mount
+a718496fa5ea2a7a9f7552eac64c7f3699fb6a86" [color=red]
+	rootfs -> "/hostroot" [label="/
+ rshared:False
+ rbind:False
+ target:linuxkit/mount
+a718496fa5ea2a7a9f7552eac64c7f3699fb6a86" color=red]
+	"/hostroot" -> "mounts
+linuxkit/mount
+a718496fa5ea2a7a9f7552eac64c7f3699fb6a86" [color=red]
+	"getty
+linuxkit/getty
+3fa8e2240c1392ba4af508d3e6be8548443b12cc" [color=blue]
+	"/etc/resolv.conf" [label="/etc/resolv.conf" color=blue]
+	"/run" [label="/run" color=blue]
+	"/tmp" [label="/tmp" color=blue]
+	"/hostroot/etc" [label="/hostroot/etc" color=blue]
+	"/usr/bin/ctr" [label="/usr/bin/ctr" color=blue]
+	"/usr/bin/runc" [label="/usr/bin/runc" color=blue]
+	"/containers" [label="/containers" color=blue]
+	"/var/log" [label="/var/log" color=blue]
+	"/dev" [label="/dev" color=blue]
+	"/sys" [label="/sys" color=blue]
+	"rngd
+linuxkit/rngd
+aaa9a63cbc9c04421b160b85aef4df5fa5d0f5f0" [color=blue]
+	"ntpd
+linuxkit/openntpd
+413ee972bc71a66030c50bc8daf7385e5c8ea269" [color=blue]
+	"/etc/resolv.conf" [label="/etc/resolv.conf" color=blue]
+	"sshd
+linuxkit/sshd
+5544de2376475f6685e12bdc10bfe49f4695873a" [color=blue]
+	"/root/.ssh" [label="/root/.ssh" color=blue]
+	"/etc/resolv.conf" [label="/etc/resolv.conf" color=blue]
+	"/run" [label="/run" color=blue]
+	"/tmp" [label="/tmp" color=blue]
+	"/hostroot/etc" [label="/hostroot/etc" color=blue]
+	"/usr/bin/ctr" [label="/usr/bin/ctr" color=blue]
+	"/usr/bin/runc" [label="/usr/bin/runc" color=blue]
+	"/containers" [label="/containers" color=blue]
+	"/var/log" [label="/var/log" color=blue]
+	"/dev" [label="/dev" color=blue]
+	"/sys" [label="/sys" color=blue]
+	"kubelet
+leoh0/kubelet
+46b192296f7995228e5dd7b13f00fbbd06d820c2" [color=blue]
+	"/dev" [label="/dev" color=blue]
+	"/etc/resolv.conf" [label="/etc/resolv.conf" color=blue]
+	"/etc/os-release" [label="/etc/os-release" color=blue]
+	"/run" [label="/run" color=blue]
+	"/var" [label="/var" color=blue]
+	"/etc/kubernetes" [label="/etc/kubernetes" color=blue]
+	"/etc/kubelet.sh.conf" [label="/etc/kubelet.sh.conf" color=blue]
+	"/etc/kubeadm" [label="/etc/kubeadm" color=blue]
+	"/usr/libexec/kubernetes/kubelet-plugins" [label="/usr/libexec/kubernetes/kubelet-plugins" color=blue]
+	"/etc/cni/net.d" [label="/etc/cni/net.d" color=blue]
+	"/opt/cni/bin" [label="/opt/cni/bin" color=blue]
+	"docker
+docker
+18.03.0-ce-dind" [color=blue]
+	"/dev" [label="/dev" color=blue]
+	"/etc/resolv.conf" [label="/etc/resolv.conf" color=blue]
+	"/etc/os-release" [label="/etc/os-release" color=blue]
+	"/lib/modules" [label="/lib/modules" color=blue]
+	"/run" [label="/run" color=blue]
+	"/var" [label="/var" color=blue]
+	"/etc/kubernetes" [label="/etc/kubernetes" color=blue]
+	"/etc/cni/net.d" [label="/etc/cni/net.d" color=blue]
+	"/opt/cni/bin" [label="/opt/cni/bin" color=blue]
+	"/usr/libexec/kubernetes/kubelet-plugins" [label="/usr/libexec/kubernetes/kubelet-plugins" color=blue]
+	"kubernetes-docker-image-cache-common
+linuxkit/kubernetes-docker-image-cache-common
+2da947148638cbbef869215cdb0e572c0402833c" [color=blue]
+	"/var/run" [label="/var/run" color=blue]
+	"kubernetes-docker-image-cache-control-plane
+linuxkit/kubernetes-docker-image-cache-control-plane
+698faae3de953d7fc0f009360bcfce98497afe76" [color=blue]
+	"/var/run" [label="/var/run" color=blue]
+	rootfs -> "/etc/resolv.conf" [label="/etc/resolv.conf
+ rshared:False
+ rbind:False
+ target:linuxkit/getty
+3fa8e2240c1392ba4af508d3e6be8548443b12cc" color=blue]
+	"/etc/resolv.conf" -> "getty
+linuxkit/getty
+3fa8e2240c1392ba4af508d3e6be8548443b12cc" [color=blue]
+	rootfs -> "/run" [label="/run
+ rshared:False
+ rbind:False
+ target:linuxkit/getty
+3fa8e2240c1392ba4af508d3e6be8548443b12cc" color=blue]
+	"/run" -> "getty
+linuxkit/getty
+3fa8e2240c1392ba4af508d3e6be8548443b12cc" [color=blue]
+	rootfs -> "/tmp" [label="/tmp
+ rshared:False
+ rbind:False
+ target:linuxkit/getty
+3fa8e2240c1392ba4af508d3e6be8548443b12cc" color=blue]
+	"/tmp" -> "getty
+linuxkit/getty
+3fa8e2240c1392ba4af508d3e6be8548443b12cc" [color=blue]
+	rootfs -> "/hostroot/etc" [label="/etc
+ rshared:False
+ rbind:False
+ target:linuxkit/getty
+3fa8e2240c1392ba4af508d3e6be8548443b12cc" color=blue]
+	"/hostroot/etc" -> "getty
+linuxkit/getty
+3fa8e2240c1392ba4af508d3e6be8548443b12cc" [color=blue]
+	rootfs -> "/usr/bin/ctr" [label="/usr/bin/ctr
+ rshared:False
+ rbind:False
+ target:linuxkit/getty
+3fa8e2240c1392ba4af508d3e6be8548443b12cc" color=blue]
+	"/usr/bin/ctr" -> "getty
+linuxkit/getty
+3fa8e2240c1392ba4af508d3e6be8548443b12cc" [color=blue]
+	rootfs -> "/usr/bin/runc" [label="/usr/bin/runc
+ rshared:False
+ rbind:False
+ target:linuxkit/getty
+3fa8e2240c1392ba4af508d3e6be8548443b12cc" color=blue]
+	"/usr/bin/runc" -> "getty
+linuxkit/getty
+3fa8e2240c1392ba4af508d3e6be8548443b12cc" [color=blue]
+	rootfs -> "/containers" [label="/containers
+ rshared:False
+ rbind:False
+ target:linuxkit/getty
+3fa8e2240c1392ba4af508d3e6be8548443b12cc" color=blue]
+	"/containers" -> "getty
+linuxkit/getty
+3fa8e2240c1392ba4af508d3e6be8548443b12cc" [color=blue]
+	rootfs -> "/var/log" [label="/var/log
+ rshared:False
+ rbind:False
+ target:linuxkit/getty
+3fa8e2240c1392ba4af508d3e6be8548443b12cc" color=blue]
+	"/var/log" -> "getty
+linuxkit/getty
+3fa8e2240c1392ba4af508d3e6be8548443b12cc" [color=blue]
+	rootfs -> "/dev" [label="/dev
+ rshared:False
+ rbind:False
+ target:linuxkit/getty
+3fa8e2240c1392ba4af508d3e6be8548443b12cc" color=blue]
+	"/dev" -> "getty
+linuxkit/getty
+3fa8e2240c1392ba4af508d3e6be8548443b12cc" [color=blue]
+	rootfs -> "/sys" [label="/sys
+ rshared:False
+ rbind:False
+ target:linuxkit/getty
+3fa8e2240c1392ba4af508d3e6be8548443b12cc" color=blue]
+	"/sys" -> "getty
+linuxkit/getty
+3fa8e2240c1392ba4af508d3e6be8548443b12cc" [color=blue]
+	rootfs -> "rngd
+linuxkit/rngd
+aaa9a63cbc9c04421b160b85aef4df5fa5d0f5f0" [color=blue]
+	rootfs -> "/etc/resolv.conf" [label="/etc/resolv.conf
+ rshared:False
+ rbind:False
+ target:linuxkit/openntpd
+413ee972bc71a66030c50bc8daf7385e5c8ea269" color=blue]
+	"/etc/resolv.conf" -> "ntpd
+linuxkit/openntpd
+413ee972bc71a66030c50bc8daf7385e5c8ea269" [color=blue]
+	rootfs -> "/root/.ssh" [label="/root/.ssh
+ rshared:False
+ rbind:False
+ target:linuxkit/sshd
+5544de2376475f6685e12bdc10bfe49f4695873a" color=blue]
+	"/root/.ssh" -> "sshd
+linuxkit/sshd
+5544de2376475f6685e12bdc10bfe49f4695873a" [color=blue]
+	rootfs -> "/etc/resolv.conf" [label="/etc/resolv.conf
+ rshared:False
+ rbind:False
+ target:linuxkit/sshd
+5544de2376475f6685e12bdc10bfe49f4695873a" color=blue]
+	"/etc/resolv.conf" -> "sshd
+linuxkit/sshd
+5544de2376475f6685e12bdc10bfe49f4695873a" [color=blue]
+	rootfs -> "/run" [label="/run
+ rshared:False
+ rbind:False
+ target:linuxkit/sshd
+5544de2376475f6685e12bdc10bfe49f4695873a" color=blue]
+	"/run" -> "sshd
+linuxkit/sshd
+5544de2376475f6685e12bdc10bfe49f4695873a" [color=blue]
+	rootfs -> "/tmp" [label="/tmp
+ rshared:False
+ rbind:False
+ target:linuxkit/sshd
+5544de2376475f6685e12bdc10bfe49f4695873a" color=blue]
+	"/tmp" -> "sshd
+linuxkit/sshd
+5544de2376475f6685e12bdc10bfe49f4695873a" [color=blue]
+	rootfs -> "/hostroot/etc" [label="/etc
+ rshared:False
+ rbind:False
+ target:linuxkit/sshd
+5544de2376475f6685e12bdc10bfe49f4695873a" color=blue]
+	"/hostroot/etc" -> "sshd
+linuxkit/sshd
+5544de2376475f6685e12bdc10bfe49f4695873a" [color=blue]
+	rootfs -> "/usr/bin/ctr" [label="/usr/bin/ctr
+ rshared:False
+ rbind:False
+ target:linuxkit/sshd
+5544de2376475f6685e12bdc10bfe49f4695873a" color=blue]
+	"/usr/bin/ctr" -> "sshd
+linuxkit/sshd
+5544de2376475f6685e12bdc10bfe49f4695873a" [color=blue]
+	rootfs -> "/usr/bin/runc" [label="/usr/bin/runc
+ rshared:False
+ rbind:False
+ target:linuxkit/sshd
+5544de2376475f6685e12bdc10bfe49f4695873a" color=blue]
+	"/usr/bin/runc" -> "sshd
+linuxkit/sshd
+5544de2376475f6685e12bdc10bfe49f4695873a" [color=blue]
+	rootfs -> "/containers" [label="/containers
+ rshared:False
+ rbind:False
+ target:linuxkit/sshd
+5544de2376475f6685e12bdc10bfe49f4695873a" color=blue]
+	"/containers" -> "sshd
+linuxkit/sshd
+5544de2376475f6685e12bdc10bfe49f4695873a" [color=blue]
+	rootfs -> "/var/log" [label="/var/log
+ rshared:False
+ rbind:False
+ target:linuxkit/sshd
+5544de2376475f6685e12bdc10bfe49f4695873a" color=blue]
+	"/var/log" -> "sshd
+linuxkit/sshd
+5544de2376475f6685e12bdc10bfe49f4695873a" [color=blue]
+	rootfs -> "/dev" [label="/dev
+ rshared:False
+ rbind:False
+ target:linuxkit/sshd
+5544de2376475f6685e12bdc10bfe49f4695873a" color=blue]
+	"/dev" -> "sshd
+linuxkit/sshd
+5544de2376475f6685e12bdc10bfe49f4695873a" [color=blue]
+	rootfs -> "/sys" [label="/sys
+ rshared:False
+ rbind:False
+ target:linuxkit/sshd
+5544de2376475f6685e12bdc10bfe49f4695873a" color=blue]
+	"/sys" -> "sshd
+linuxkit/sshd
+5544de2376475f6685e12bdc10bfe49f4695873a" [color=blue]
+	rootfs -> "/dev" [label="/dev
+ rshared:False
+ rbind:False
+ target:leoh0/kubelet
+46b192296f7995228e5dd7b13f00fbbd06d820c2" color=blue]
+	"/dev" -> "kubelet
+leoh0/kubelet
+46b192296f7995228e5dd7b13f00fbbd06d820c2" [color=blue]
+	rootfs -> "/etc/resolv.conf" [label="/etc/resolv.conf
+ rshared:False
+ rbind:False
+ target:leoh0/kubelet
+46b192296f7995228e5dd7b13f00fbbd06d820c2" color=blue]
+	"/etc/resolv.conf" -> "kubelet
+leoh0/kubelet
+46b192296f7995228e5dd7b13f00fbbd06d820c2" [color=blue]
+	rootfs -> "/etc/os-release" [label="/etc/os-release
+ rshared:False
+ rbind:False
+ target:leoh0/kubelet
+46b192296f7995228e5dd7b13f00fbbd06d820c2" color=blue]
+	"/etc/os-release" -> "kubelet
+leoh0/kubelet
+46b192296f7995228e5dd7b13f00fbbd06d820c2" [color=blue]
+	rootfs -> "/run" [label="/run
+ rshared:True
+ rbind:True
+ target:leoh0/kubelet
+46b192296f7995228e5dd7b13f00fbbd06d820c2" color=blue]
+	"/run" -> "kubelet
+leoh0/kubelet
+46b192296f7995228e5dd7b13f00fbbd06d820c2" [color=blue]
+	rootfs -> "/var" [label="/var
+ rshared:True
+ rbind:True
+ target:leoh0/kubelet
+46b192296f7995228e5dd7b13f00fbbd06d820c2" color=blue]
+	"/var" -> "kubelet
+leoh0/kubelet
+46b192296f7995228e5dd7b13f00fbbd06d820c2" [color=blue]
+	rootfs -> "/etc/kubernetes" [label="/var/lib/kubeadm
+ rshared:False
+ rbind:False
+ target:leoh0/kubelet
+46b192296f7995228e5dd7b13f00fbbd06d820c2" color=blue]
+	"/etc/kubernetes" -> "kubelet
+leoh0/kubelet
+46b192296f7995228e5dd7b13f00fbbd06d820c2" [color=blue]
+	rootfs -> "/etc/kubelet.sh.conf" [label="/etc/kubelet.sh.conf
+ rshared:False
+ rbind:False
+ target:leoh0/kubelet
+46b192296f7995228e5dd7b13f00fbbd06d820c2" color=blue]
+	"/etc/kubelet.sh.conf" -> "kubelet
+leoh0/kubelet
+46b192296f7995228e5dd7b13f00fbbd06d820c2" [color=blue]
+	rootfs -> "/etc/kubeadm" [label="/etc/kubeadm
+ rshared:False
+ rbind:False
+ target:leoh0/kubelet
+46b192296f7995228e5dd7b13f00fbbd06d820c2" color=blue]
+	"/etc/kubeadm" -> "kubelet
+leoh0/kubelet
+46b192296f7995228e5dd7b13f00fbbd06d820c2" [color=blue]
+	rootfs -> "/usr/libexec/kubernetes/kubelet-plugins" [label="/var/lib/kubelet-plugins
+ rshared:True
+ rbind:True
+ target:leoh0/kubelet
+46b192296f7995228e5dd7b13f00fbbd06d820c2" color=blue]
+	"/usr/libexec/kubernetes/kubelet-plugins" -> "kubelet
+leoh0/kubelet
+46b192296f7995228e5dd7b13f00fbbd06d820c2" [color=blue]
+	rootfs -> "/etc/cni/net.d" [label="/var/lib/cni/conf
+ rshared:True
+ rbind:True
+ target:leoh0/kubelet
+46b192296f7995228e5dd7b13f00fbbd06d820c2" color=blue]
+	"/etc/cni/net.d" -> "kubelet
+leoh0/kubelet
+46b192296f7995228e5dd7b13f00fbbd06d820c2" [color=blue]
+	rootfs -> "/opt/cni/bin" [label="/var/lib/cni/bin
+ rshared:True
+ rbind:True
+ target:leoh0/kubelet
+46b192296f7995228e5dd7b13f00fbbd06d820c2" color=blue]
+	"/opt/cni/bin" -> "kubelet
+leoh0/kubelet
+46b192296f7995228e5dd7b13f00fbbd06d820c2" [color=blue]
+	rootfs -> "/dev" [label="/dev
+ rshared:False
+ rbind:False
+ target:docker
+18.03.0-ce-dind" color=blue]
+	"/dev" -> "docker
+docker
+18.03.0-ce-dind" [color=blue]
+	rootfs -> "/etc/resolv.conf" [label="/etc/resolv.conf
+ rshared:False
+ rbind:False
+ target:docker
+18.03.0-ce-dind" color=blue]
+	"/etc/resolv.conf" -> "docker
+docker
+18.03.0-ce-dind" [color=blue]
+	rootfs -> "/etc/os-release" [label="/etc/os-release
+ rshared:False
+ rbind:False
+ target:docker
+18.03.0-ce-dind" color=blue]
+	"/etc/os-release" -> "docker
+docker
+18.03.0-ce-dind" [color=blue]
+	rootfs -> "/lib/modules" [label="/lib/modules
+ rshared:False
+ rbind:False
+ target:docker
+18.03.0-ce-dind" color=blue]
+	"/lib/modules" -> "docker
+docker
+18.03.0-ce-dind" [color=blue]
+	rootfs -> "/run" [label="/run
+ rshared:False
+ rbind:False
+ target:docker
+18.03.0-ce-dind" color=blue]
+	"/run" -> "docker
+docker
+18.03.0-ce-dind" [color=blue]
+	rootfs -> "/var" [label="/var
+ rshared:True
+ rbind:True
+ target:docker
+18.03.0-ce-dind" color=blue]
+	"/var" -> "docker
+docker
+18.03.0-ce-dind" [color=blue]
+	rootfs -> "/etc/kubernetes" [label="/var/lib/kubeadm
+ rshared:False
+ rbind:False
+ target:docker
+18.03.0-ce-dind" color=blue]
+	"/etc/kubernetes" -> "docker
+docker
+18.03.0-ce-dind" [color=blue]
+	rootfs -> "/etc/cni/net.d" [label="/var/lib/cni/conf
+ rshared:True
+ rbind:True
+ target:docker
+18.03.0-ce-dind" color=blue]
+	"/etc/cni/net.d" -> "docker
+docker
+18.03.0-ce-dind" [color=blue]
+	rootfs -> "/opt/cni/bin" [label="/var/lib/cni/bin
+ rshared:True
+ rbind:True
+ target:docker
+18.03.0-ce-dind" color=blue]
+	"/opt/cni/bin" -> "docker
+docker
+18.03.0-ce-dind" [color=blue]
+	rootfs -> "/usr/libexec/kubernetes/kubelet-plugins" [label="/var/lib/kubelet-plugins
+ rshared:True
+ rbind:True
+ target:docker
+18.03.0-ce-dind" color=blue]
+	"/usr/libexec/kubernetes/kubelet-plugins" -> "docker
+docker
+18.03.0-ce-dind" [color=blue]
+	rootfs -> "/var/run" [label="/var/run
+ rshared:False
+ rbind:False
+ target:linuxkit/kubernetes-docker-image-cache-common
+2da947148638cbbef869215cdb0e572c0402833c" color=blue]
+	"/var/run" -> "kubernetes-docker-image-cache-common
+linuxkit/kubernetes-docker-image-cache-common
+2da947148638cbbef869215cdb0e572c0402833c" [color=blue]
+	rootfs -> "/var/run" [label="/var/run
+ rshared:False
+ rbind:False
+ target:linuxkit/kubernetes-docker-image-cache-control-plane
+698faae3de953d7fc0f009360bcfce98497afe76" color=blue]
+	"/var/run" -> "kubernetes-docker-image-cache-control-plane
+linuxkit/kubernetes-docker-image-cache-control-plane
+698faae3de953d7fc0f009360bcfce98497afe76" [color=blue]
+}
